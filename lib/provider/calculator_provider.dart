@@ -10,7 +10,6 @@ class CalculatorProvider extends ChangeNotifier{
     switch(value){
       case "C":
         computationController.clear();
-        // computationController.text = str.substring(0, str.length - 1);
         break;
       case "=":
         compute();
@@ -30,7 +29,7 @@ class CalculatorProvider extends ChangeNotifier{
 
   void checkNumber() {
     String text = computationController.text;
-    int number = int.tryParse(computationController.text) ?? 0;
+    double number = double.tryParse(computationController.text) ?? 0;
     if (number % 2 == 0) {
       computationController.text = 'Genap';
     } else {

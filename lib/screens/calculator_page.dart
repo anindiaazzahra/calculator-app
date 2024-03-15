@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tugas2tpm/constant/colors.dart';
 import 'package:tugas2tpm/provider/calculator_provider.dart';
+import 'package:tugas2tpm/screens/ganjil_genap_page.dart';
+import 'package:tugas2tpm/screens/kelompok_page.dart';
+import 'package:tugas2tpm/screens/login_page.dart';
 import 'package:tugas2tpm/screens/widgets_data.dart';
 import 'package:tugas2tpm/widgets/calculator_button.dart';
 import 'package:tugas2tpm/widgets/textfield.dart';
@@ -22,8 +25,70 @@ class CalculatorPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.black,
           appBar: AppBar(
-            title: const Center(child: Text("Calculator")),
+            title: const Padding(
+              padding: EdgeInsets.fromLTRB(80.0, 0.0, 0.0, 0.0),
+              child: Text("Kalkulator"),
+            ),
             backgroundColor: Colors.black,
+          ),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: AppColors.secondaryColor,
+                  ),
+                  child: Text(
+                    'Tugas TPM',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: const Text('Data Kelompok'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const DataKelompokPage()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Kalkulator'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CalculatorPage()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Ganjil Genap Checker'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const GanjilGenapPage()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Logout'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginPage(message: "Anda berhasil logout")),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
           body: Column(
             children: [
